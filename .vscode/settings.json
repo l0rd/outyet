@@ -1,0 +1,16 @@
+{
+    "go.lintFlags": ["--fast"],
+    "go.useLanguageServer": true,
+    "go.lintTool": "golangci-lint",
+    "go.enableCodeLens": {
+        "references": true,
+        "runtest": true
+    },
+    "go.inferGopath": false,
+    "go.languageServerExperimentalFeatures": {
+        "diagnostics": true,
+        "documentLink": true
+    },
+    "go.languageServerFlags": [],
+    "go.useGoProxyToCheckForToolUpdates": false
+}
