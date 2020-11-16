@@ -4,7 +4,5 @@ metadata:
 components:
   - id: golang/go/latest
     type: chePlugin
-  - id: ms-kubernetes-tools/vscode-kubernetes-tools/latest
-    type: chePlugin
   - id: ms-vscode/vscode-github-pullrequest/latest
     type: chePlugin
