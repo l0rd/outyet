@@ -1,0 +1,10 @@
+apiVersion: 1.0.0
+metadata:
+  name: outyet
+components:
+  - id: golang/go/latest
+    type: chePlugin
+  - id: ms-kubernetes-tools/vscode-kubernetes-tools/latest
+    type: chePlugin
+  - id: ms-vscode/vscode-github-pullrequest/latest
+    type: chePlugin
