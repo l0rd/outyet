@@ -24,3 +24,6 @@ Topics covered:
 * Dependency injection
 * Time ([time](//golang.org/pkg/time/))
 
+# Contributing to this project
+You can use Eclipse Che to quickly get started and try out changes to this project with:
+[![Contribute](https://www.eclipse.org/che/contribute.svg)](https://che-eclipse-che.apps.mloriedo-che-devex.devcluster.openshift.com/f?url=https://github.com/l0rd/outyet)
