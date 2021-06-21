@@ -1,0 +1,6 @@
+apiVersion: 2.1.0
+
+components:
+ - name: go-tools
+   container:
+     image: golang:1.14-stretch
