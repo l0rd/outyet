@@ -6,4 +6,5 @@ attributes:
 components:
  - name: go-tools
    container:
-     image: quay.io/eclipse/che-plugin-sidecar@sha256:8615a29435b0256bffaf85ab2cf9327b059f14eaa6614346dfd51e3a6dd9f041
+     image: quay.io/eclipse/che-golang-1.14:nightly
+     memoryLimit: 2048M
