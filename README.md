@@ -1,6 +1,6 @@
 # Go example project
 
-[![](https://img.shields.io/badge/Eclipse_Che-Hosted%20by%20Red%20Hat-525C86?logo=eclipse-che&labelColor=FDB940)](https://che-eclipse-che.apps.mloriedo-che-devex.devcluster.openshift.com/#https://github.com/l0rd/outyet/)
+[![](https://img.shields.io/badge/Eclipse_Che-Hosted%20by%20Red%20Hat-525C86?logo=eclipse-che&labelColor=FDB940)](https://che-eclipse-che.apps.mloriedo-che-devex.devcluster.openshift.com/#https://github.com/l0rd/outyet/blob/main/devfile.yaml)
 
 This repository contains a Go program that demonstrates the language, standard libraries, and tools.
 
