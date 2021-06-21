@@ -1,9 +1,10 @@
-# Go example projects
+# Go example project
 
-This repository contains a Go programs that
-demonstrates the language, standard libraries, and tools.
+[![](https://img.shields.io/badge/Eclipse_Che-Hosted%20by%20Red%20Hat-525C86?logo=eclipse-che&labelColor=FDB940)](https://che-eclipse-che.apps.mloriedo-che-devex.devcluster.openshift.com/#https://github.com/l0rd/outyet)
 
-The example has been copied from [golang/example](https://github.com/golang/example/outyet)
+This repository contains a Go program that demonstrates the language, standard libraries, and tools.
+
+The example has been copied from [golang/example](https://github.com/golang/example/)
 
 ### [outyet](outyet/) ([godoc](//godoc.org/github.com/golang/example/outyet))
 
