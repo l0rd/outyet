@@ -2,7 +2,7 @@ schemaVersion: 2.1.0
 attributes:
   che-theia.eclipse.org/sidecar-policy: USE_DEV_CONTAINER
 components:
- - name: go-tools
-   container:
-     image: quay.io/eclipse/che-golang-1.14:nightly
-     memoryLimit: 2048M
+  - name: go-tools
+    container:
+      image: quay.io/eclipse/che-golang-1.14:nightly
+      memoryLimit: 1024M
