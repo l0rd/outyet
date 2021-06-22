@@ -1,15 +1,51 @@
 schemaVersion: 2.1.0
+metadata:
+  name: spring-petclinic
 attributes:
   che-theia.eclipse.org/sidecar-policy: USE_DEV_CONTAINER
 projects:
-  - name: outyet
+  - name: spring-petclinic
     git:
       checkoutFrom:
-        revision: main
+        revision: devfilev2
       remotes:
-        origin: "https://github.com/l0rd/outyet"
+        origin: "https://github.com/che-samples/spring-petclinic"
+
 components:
-  - name: go-tools
+  - name: tools
     container:
-      image: quay.io/eclipse/che-golang-1.14:nightly
-      memoryLimit: 1024M
+      image: quay.io/eclipse/che-java11-maven:nightly
+      endpoints:
+        - exposure: none
+          name: debug
+          protocol: tcp
+          targetPort: 5005
+        - exposure: public
+          name: 8080-tcp
+          protocol: http
+          targetPort: 8080
+      volumeMounts:
+        - name: m2
+          path: /home/user/.m2
+      memoryLimit: 1536M
+  - name: m2
+    volume:
+      size: 1G
+commands:
+  - id: build
+    exec:
+      component: tools
+      workingDir: ${PROJECTS_ROOT}/spring-petclinic
+      commandLine: "mvn clean install"
+      group:
+        kind: build
+        isDefault: true
+  - id: run
+    exec:
+      component: tools
+      workingDir: ${PROJECTS_ROOT}/spring-petclinic
+      commandLine: "java -jar -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005 target/*.jar"
+      group:
+        kind: run
+        isDefault: true
+    
