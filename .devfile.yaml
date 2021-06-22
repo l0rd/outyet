@@ -1,6 +1,13 @@
 schemaVersion: 2.1.0
 attributes:
   che-theia.eclipse.org/sidecar-policy: USE_DEV_CONTAINER
+projects:
+  - name: outyet
+    git:
+      checkoutFrom:
+        revision: main
+      remotes:
+        origin: "https://github.com/l0rd/outyet"
 components:
   - name: go-tools
     container:
