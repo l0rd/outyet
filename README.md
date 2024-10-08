@@ -37,6 +37,11 @@ ko build --bare \
       --image-label "org.opencontainers.image.licenses=Apache-2.0" .
       
 # kubectl create deployment hello-node --image=registry.k8s.io/e2e-test-images/agnhost:2.39 -- /agnhost netexec --http-port=8080
-ko apply -f config/
+ko apply --bare \
+      --image-label "org.opencontainers.image.source=https://github.com/l0rd/outyet" \
+      --image-label "org.opencontainers.image.description=A very simple go app" \
+      --image-label "org.opencontainers.image.licenses=Apache-2.0" \
+      -f config/
+kubectl expose deployment outyet --type=NodePort --port=8080
 ko delete -f config/
 ```
