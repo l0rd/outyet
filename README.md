@@ -6,10 +6,6 @@ This repository contains a Go program that demonstrates the language, standard l
 
 The example has been copied from [golang/example](https://github.com/golang/example/)
 
-### [outyet](outyet/) ([godoc](//godoc.org/github.com/golang/example/outyet))
-
-    go get github.com/golang/example/outyet
-
 A web server that answers the question: "Is Go 1.x out yet?"
 
 Topics covered:
@@ -27,7 +23,7 @@ Topics covered:
 
 ### 
 
-```
+```bash
 echo $CR_PAT | ko login ghcr.io -u <gh-username> --password-stdin
 export KO_DOCKER_REPO=ghcr.io/l0rd/outyet
 
@@ -37,11 +33,15 @@ ko build --bare \
       --image-label "org.opencontainers.image.licenses=Apache-2.0" .
       
 # kubectl create deployment hello-node --image=registry.k8s.io/e2e-test-images/agnhost:2.39 -- /agnhost netexec --http-port=8080
-ko apply --bare \
-      --image-label "org.opencontainers.image.source=https://github.com/l0rd/outyet" \
-      --image-label "org.opencontainers.image.description=A very simple go app" \
-      --image-label "org.opencontainers.image.licenses=Apache-2.0" \
-      -f config/
+kubectl apply -f config/
 kubectl expose deployment outyet --type=NodePort --port=8080
 ko delete -f config/
+```
+
+```bash
+podman build -t ghcr.io/l0rd/outyet-dev:latest  --arch amd64 \
+      --label "org.opencontainers.image.source=https://github.com/l0rd/outyet" \
+      --label "org.opencontainers.image.description=A very simple go app" \
+      --label "org.opencontainers.image.licenses=Apache-2.0" -f Dockerfile.dev .
+podman push ghcr.io/l0rd/outyet-dev:latest
 ```

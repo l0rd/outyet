@@ -1,48 +1,58 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Pod
 metadata:
   name: outyet
-spec:
-  selector:
-    matchLabels:
-      app: outyet
-  replicas: 1
-  template:
-    metadata:
-      labels:
-        app: outyet
-    spec:
-      containers:
-        - name: outyet
-          image: ko://github.com/l0rd/outyet
-          resources:
-            limits:
-              memory: "128Mi"
-              cpu: "500m"
----
-kind: Service
-apiVersion: v1
-metadata:
-  name: outyet-service
-spec:
-  selector:
+  labels:
     app: outyet
-  ports:
-    - port: 8080
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: outyet-ingress
 spec:
-  rules:
-    - http:
-        paths:
-          - pathType: Prefix
-            path: /outyet
-            backend:
-              service:
-                name: outyet-service
-                port:
-                  number: 8080
----
+  containers:
+    - name: outyet
+      image: ghcr.io/l0rd/outyet:latest
+      ports:
+        - containerPort: 8080
+          protocol: TCP
+      resources:
+        limits:
+          memory: "128Mi"
+          cpu: "500m"
+#---
+#kind: Service
+#apiVersion: v1
+#metadata:
+#  name: outyet-service
+#spec:
+#  selector:
+#    app: outyet
+#  ports:
+#    - port: 8080
+#---
+#apiVersion: networking.k8s.io/v1
+#kind: Ingress
+#metadata:
+#  name: outyet-ingress
+#spec:
+#  ingressClassName: nginx
+#  rules:
+#    - http:
+#        paths:
+#          - pathType: Prefix
+#            path: /outyet
+#            backend:
+#              service:
+#                name: outyet-service
+#                port:
+#                  number: 8080
+#---
+#apiVersion: route.openshift.io/v1
+#kind: Route
+#metadata:
+#  name: outyet
+#spec:
+#  port:
+#    targetPort: 8080
+#  to:
+#    kind: Service
+#    name: outyet
+#    path:
+#  tls:
+#    termination: edge
