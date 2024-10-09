@@ -1,12 +1,14 @@
-FROM docker.io/golang:1.23.2
+FROM quay.io/devfile/universal-developer-image:ubi8-latest
 
 # Set HOME. Required for CRI-o to set /etc/passwd correctly and in general for other CLI tools
-ENV HOME=/home/user
+#ENV HOME=/home/user
 
 # Set SHELL to configure the default shell used in web terminals
-ENV SHELL=/usr/bin/bash
+#ENV SHELL=/usr/bin/bash
 
 # Set permissions on /home to allow arbitrary users to write
-RUN mkdir /home/user && chgrp -R 0 /home/ && chmod -R g=u /home/
+# RUN mkdir /home/user && chgrp -R 0 /home/ && chmod -R g=u /home/
 
-CMD ["tail", "-f", "/dev/null"]
+#CMD ["tail", "-f", "/dev/null"]
+
+#USER 1001
