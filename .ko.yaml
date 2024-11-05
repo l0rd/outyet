@@ -1,3 +1,6 @@
 defaultPlatforms:
   - linux/arm64
   - linux/amd64
+defaultBaseImage: golang:1.23
+defaultFlags:
+  - -gcflags=all="-N -l"
