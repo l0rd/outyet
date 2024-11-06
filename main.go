@@ -33,7 +33,7 @@ import (
 var (
 	httpAddr   = flag.String("http", ":8080", "Listen address")
 	pollPeriod = flag.Duration("poll", 5*time.Second, "Poll period")
-	version    = flag.String("version", "1.23", "Go version")
+	version    = flag.String("version", "1.24.0", "Go version")
 )
 
 const baseChangeURL = "https://go.googlesource.com/go/+/"

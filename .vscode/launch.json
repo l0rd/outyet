@@ -5,6 +5,13 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Attach to Port 40000",
+            "type": "go",
+            "request": "attach",
+            "mode": "remote",
+            "port": 40000
+        },
+        {
             "name": "Launch file",
             "type": "go",
             "request": "launch",
