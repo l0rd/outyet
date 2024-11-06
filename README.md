@@ -27,7 +27,7 @@ Topics covered:
 echo $CR_PAT | ko login ghcr.io -u <gh-username> --password-stdin
 export KO_DOCKER_REPO=ghcr.io/l0rd/outyet
 
-ko build --bare \
+ko build --bare --disable-optimizations --preserve-import-paths \
       --image-label "org.opencontainers.image.source=https://github.com/l0rd/outyet" \
       --image-label "org.opencontainers.image.description=A very simple go app" \
       --image-label "org.opencontainers.image.licenses=Apache-2.0" .
