@@ -127,14 +127,26 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 // tmpl is the HTML template that drives the user interface.
 var tmpl = template.Must(template.New("tmpl").Parse(`
-<!DOCTYPE html><html><body><center>
-	<h2>Is Go {{.Version}} out yet?</h2>
-	<h1>
-	{{if .Yes}}
-		<a href="{{.URL}}">YES!</a>
-	{{else}}
-		No. :-(
-	{{end}}
-	</h1>
-</center></body></html>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Outyet</title>
+		<link rel="stylesheet" href="https://fonts.xz.style/serve/inter.css">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css">
+	</head>
+	<body>
+		<center>
+			<h2>Is Go {{.Version}} out yet?</h2>
+			<h1>
+			{{if .Yes}}
+				<a href="{{.URL}}">YES!</a>
+			{{else}}
+				No. :-(
+			{{end}}
+			</h1>
+		</center>
+	</body>
+</html>
 `))
