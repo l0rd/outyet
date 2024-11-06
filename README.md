@@ -21,26 +21,53 @@ Topics covered:
 * Dependency injection
 * Time ([time](//golang.org/pkg/time/))
 
-### 
+### Build the container image
+
+<!---
+
+If using ko, debugging using `attach local` config doesn't work because the source code is not included in the container.
+Debugging using `attach remote` works with the image build with ko if we use the option `--debug` but then the application is not started (dlv is started).
+https://ko.build/reference/ko_build/
+I haven't found a way to address this problem so I am using a podman build to create the image.
 
 ```bash
 echo $CR_PAT | ko login ghcr.io -u <gh-username> --password-stdin
 export KO_DOCKER_REPO=ghcr.io/l0rd/outyet
 
-ko build --bare --debug \
+ko build --bare --disable-optimizations  \
       --image-label "org.opencontainers.image.source=https://github.com/l0rd/outyet" \
       --image-label "org.opencontainers.image.description=A very simple go app" \
       --image-label "org.opencontainers.image.licenses=Apache-2.0" \
       --image-label "org.opencontainers.image.description=A sample Go web app" .
-      
-# kubectl create deployment hello-node --image=registry.k8s.io/e2e-test-images/agnhost:2.39 -- /agnhost netexec --http-port=8080
+```
+-->
+
+```bash
+podman build -t ghcr.io/l0rd/outyet:latest --arch amd64 \
+      --label "org.opencontainers.image.source=https://github.com/l0rd/outyet" \
+      --label "org.opencontainers.image.description=A very simple go app" \
+      --label "org.opencontainers.image.licenses=Apache-2.0" \
+      --label "org.opencontainers.image.description=A sample Go web app" .
+podman push ghcr.io/l0rd/outyet:latest
+```
+
+### Run the application on Kubernetes
+
+```bash
 kubectl apply -f config/
 kubectl expose deployment outyet --type=NodePort --port=8080
+```
+
+### Delete the application
+
+```bash
 ko delete -f config/
 ```
 
+### Build the container to debug the application
+
 ```bash
-podman build -t ghcr.io/l0rd/outyet-dev:latest  --arch amd64 \
+podman build -t ghcr.io/l0rd/outyet-dev:latest --arch amd64 \
       --label "org.opencontainers.image.source=https://github.com/l0rd/outyet" \
       --label "org.opencontainers.image.description=A very simple go app" \
       --label "org.opencontainers.image.licenses=Apache-2.0" -f Dockerfile.dev .

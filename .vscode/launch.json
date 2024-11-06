@@ -5,7 +5,23 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Attach to Port 40000",
+            "name": "Attach to Local Process",
+            "type": "go",
+            "request": "attach",
+            "mode": "local",
+            "processId": "/outyet",
+            // Required if the IDE and outyet
+            /// run in different containers and
+            // the source code is in different paths
+            "substitutePath": [
+                {
+                    "from": "/projects/outyet",
+                    "to": "/app"
+                }
+            ]
+        },
+        {
+            "name": "Attach to Remote Process",
             "type": "go",
             "request": "attach",
             "mode": "remote",
@@ -17,13 +33,6 @@
             "request": "launch",
             "mode": "debug",
             "program": "main.go"
-        },
-        {
-            "name": "Attach to Process",
-            "type": "go",
-            "request": "attach",
-            "mode": "local",
-            "processId": "/ko-app/outyet"
         }
     ]
 }
